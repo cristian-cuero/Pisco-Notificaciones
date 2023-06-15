@@ -7,7 +7,7 @@ const consultasController = async (noti) => {
 
     const datos = await consulta(noti.SQL);
 
-    if (datos) {
+    if (datos.length > 0) {
       const xls = json2xls(datos);
       fs.writeFileSync("datos.xlsx", xls, "binary");
       await EnviarCorreo(

@@ -143,4 +143,44 @@
   ******** Se Presento El Siguiente Error   
   ******** Inicio De Servicio El Dia: 2023-05-05 16:35 De Manera De Correcta ******** 
   En La Fecha: 2023-05-05 16:35  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-05-06 09:32 De Manera De Correcta ******** 
+  En La Fecha: 2023-05-06 09:32  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-05-06 09:35 De Manera De Correcta ******** 
+  En La Fecha: 2023-05-06 09:35  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-05-08 08:12 De Manera De Correcta ******** 
+  En La Fecha: 2023-05-08 08:12  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-05-08 08:13 De Manera De Correcta ******** 
+  En La Fecha: 2023-05-08 08:13  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:21 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:21  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:35 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:35  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:36 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:36  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:40 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:40  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:41 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:41  ******** 
+  
+  ******** Se Presento El Siguiente Error   
+  ******** Inicio De Servicio El Dia: 2023-06-15 08:45 De Manera De Correcta ******** 
+  En La Fecha: 2023-06-15 08:45  ******** 
  
