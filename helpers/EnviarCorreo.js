@@ -1,15 +1,16 @@
 //** Importaciones necesarias
 const nodemailer = require("nodemailer");
+const { obtenerInfoArchivosExcelEnRaiz } = require("./ExcelValidator");
 const { Logs } = require("./Logs");
 
 // async..await is not allowed in global scope, must use a wrapper
-const EnviarCorreo = async (mensaje = "",to ="soporte@piscotics.com", subject = "" ) => {
+const EnviarCorreo = async (mensaje = "",to ="soporte@piscotics.com", subject = "" , path = 1) => {
 
  
     let html = '<!DOCTYPE html> <html lang="en"> <head>  ';
   html =
     html +
-    '<div style="margin: 0; background-color: #091548; padding: 0"> <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: #091548" width="100%" > <tbody> <tr> <td> <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="color: #000; width: 600px" width="600" > ';
+    '<div style="margin: 0; background-color: #ffffff; padding: 0"> <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: #091548" width="100%" > <tbody> <tr> <td> <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="color: #000; width: 600px" width="600" > ';
   html =
     html +
     '<tbody> <tr> <td class="m_7096334481266321687column" style=" font-weight: 400; text-align: left; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 5px; padding-bottom: 15px; border-top: 0; border-right: 0; border-bottom: 0; border-left: 0; " width="100%" > <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" > <tr> <td style=" width: 100%; padding-right: 0; padding-left: 0; padding-top: 8px; " ';
@@ -21,14 +22,14 @@ const EnviarCorreo = async (mensaje = "",to ="soporte@piscotics.com", subject = 
     ' </div> </td> </tr> </table> <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="word-break: break-word" width="100%" > <tr> <td style="padding-bottom: 15px; padding-top: 10px"> <div style="font-family: sans-serif"> <div style=" font-size: 14px; color: #fff; line-height: 1.2; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif; " > ';
   html =
     html +
-    '<p style=" margin: 0; font-size: 14px; text-align: center; " > <span style="font-size: 30px" >Alerta Pisco </span> </p> </div> </div> </td> </tr> </table> <table border="0" cellpadding="5" cellspacing="0" role="presentation" style="word-break: break-word" width="100%" > <tr> <td> <div style="font-family: sans-serif"> <div style=" font-size: 14px; color: #fff; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif; " > <p style=" margin: 0; font-size: 14px; text-align: center; " > ';
+    '<p style=" margin: 0; font-size: 14px; text-align: center; " > <span style="font-size: 30px" >Alerta Pisco </span> </p> </div> </div> </td> </tr> </table> <table border="0" cellpadding="5" cellspacing="0" role="presentation" style="word-break: break-word" width="100%" > <tr> <td> <div style="font-family: sans-serif"> <div style=" font-size: 14px; color: #fff; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif; " > <p style=" margin: 0; font-size: 14px; text-align: center; " > <pre>';
   html =
     html +
     mensaje +
-    '  </p> </div> </div> </td> </tr> </table> <table border="0" cellpadding="0" cellspacing="0" role="presentation style=" width="100%" > <tr> <td style=" padding-bottom: 15px; padding-left: 10px; padding-right: 10px; padding-top: 10px; " > ';
+    ' </pre>  </p> </div> </div> </td> </tr> </table> <table border="0" cellpadding="0" cellspacing="0" role="presentation style=" width="100%" > <tr> <td style=" padding-bottom: 15px; padding-left: 10px; padding-right: 10px; padding-top: 10px; " > ';
   html =
     html +
-    '<div align="center"> <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="60%" > <tr> <td style=" font-size: 1px; line-height: 1px; border-top: 1px solid #5a6ba8; " > <span> </span> </td> </tr> </table> </div> </td> </tr> </table> <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="word-break: break-word" width="100%" > <tr> <td style=" padding-bottom: 40px; padding-left: 25px; padding-right: 25px; padding-top: 10px; " > <div style="font-family: sans-serif"> <div style=" font-size: 14px; color: #7f96ef; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif; " >';
+    ' <div align="center"> <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="60%" > <tr> <td style=" font-size: 1px; line-height: 1px; border-top: 1px solid #5a6ba8; " > <span> </span> </td> </tr> </table> </div> </td> </tr> </table> <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="word-break: break-word" width="100%" > <tr> <td style=" padding-bottom: 40px; padding-left: 25px; padding-right: 25px; padding-top: 10px; " > <div style="font-family: sans-serif"> <div style=" font-size: 14px; color: #7f96ef; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif; " >';
   html =
     html +
     '</div> </div> </td> </tr> </table> </t d> </tr> </tbody> </table> </td> </tr> </tbody> </table> <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" > <tbody> <tr> <td> <table align="center" border="0" cellpadding="0" cellspacing="0" class="m_7096334481266321687row-content m_7096334481266321687stack" role="presentation" style="color: #000; width: 600px" width="600" >';
@@ -62,7 +63,20 @@ const EnviarCorreo = async (mensaje = "",to ="soporte@piscotics.com", subject = 
     //   rejectUnauthorized: false,
     // },
   });
+  let attachments = [];  // Inicializamos un arreglo vacío para los adjuntos
+  if (path === 1) {
+  
+    const archivos = await obtenerInfoArchivosExcelEnRaiz()
+    
+    for(const archivo of archivos){
+      attachments.push({   // Agregamos el archivo al arreglo de adjuntos
+        filename: archivo.nombre,
+        path: archivo.ruta // Ruta del archivo
+      });
 
+    }
+  
+  }
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"PISCO COMPANY TICS< "' + process.env.emailinfo + '">"', // sender address
@@ -70,10 +84,7 @@ const EnviarCorreo = async (mensaje = "",to ="soporte@piscotics.com", subject = 
     subject, // Subject line
     text: "Prueba Pisco", // plain text body
     html: html, // html body
-    attachments: {   // file on disk as an attachment
-      filename: 'ARCHIVOPRUEBA.xlsx',
-      path: __dirname.replace('\helpers', '')  + "datos.xlsx" // stream this file
-  },
+    attachments: attachments // Adjuntos (si existen)
   });
     
  
